@@ -28,6 +28,7 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install robotframework
+        pip install robotframework-requests 
  
     # Step 4: Run Robot Framework tests
     - name: Run Tests
