@@ -1,1 +1,11 @@
+name: Run Robot Framework Tests
 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
