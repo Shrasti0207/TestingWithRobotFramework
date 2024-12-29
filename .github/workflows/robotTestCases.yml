@@ -1,25 +1,42 @@
-name: Robot Framework
-  # You may pin to the exact commit or the version.
-  uses: joonvena/robotframework-docker-action@v1.1
-  with:
-    # Shared memory that Docker container is allowed to use
-    allowed_shared_memory: # default is 1g
-    # Browser to use
-    browser: # default is chrome
-    # Extra settings for parallel execution. https://github.com/mkorpela/pabot#command-line-options
-    pabot_options: # default is 
-    # Extra options for robot command
-    robot_options: # default is 
-    # Color depth of the virtual screen
-    screen_color_depth: # default is 24
-    # Height of the virtual screen
-    screen_height: # default is 1080
-    # Width of the virtual screen
-    screen_width: # default is 1920
-    # Directory where Robot tests are located in the repository
-    robot_tests_dir: AutomationProject/APITestCases
-    # Where will the report from test be saved
-    robot_reports_dir: AutomationProject/Report
-    # The docker image which will be used to execute the tests
-    robot_runner_image: # default is ppodgorsek/robot-framework:latest
-          
+name: Run Robot Framework Tests
+ 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+ 
+jobs:
+  robot-tests:
+    runs-on: ubuntu-latest
+ 
+    steps:
+    # Step 1: Checkout the code
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+ 
+    # Step 2: Set up Python environment
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+ 
+    # Step 3: Install dependencies
+    - name: Install Dependencies
+      run: |
+        pip install --upgrade pip
+        pip install robotframework
+ 
+    # Step 4: Run Robot Framework tests
+    - name: Run Tests
+      run: |
+        robot AutomationProject/APITestCases
+ 
+    # Step 5: Upload Test Results (Optional)
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v3
+      with:
+        name: robot-results
+        path: results/
