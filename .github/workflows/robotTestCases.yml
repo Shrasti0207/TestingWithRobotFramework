@@ -54,19 +54,24 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
-    # Step 2: Use Robot Framework GitHub Action
-    - name: Run Robot Framework UI Tests
+    # Step 2: Ensure reports directory exists
+    - name: Create Reports Directory
+      run: |
+        mkdir -p ${{ github.workspace }}/tests/robot/reports
+
+    # Step 3: Run Robot Framework UI Tests using the GitHub Action
+    - name: Robot Framework Action
       uses: tarathep/robotframework-github-action@v1.0
       with:
-        image: kietara/robot-framework
-        image_version: '1.0'
+        image: robotframework/robot-framework:latest  # Updated to a valid image
+        image_version: 'latest'  # Ensure to use a working version
         tests_dir: '${{ github.workspace }}/tests/robot'
         reports_dir: '${{ github.workspace }}/tests/robot/reports'
 
-    # Step 3: Execute Robot Framework Tests
+    # Step 4: Execute Robot Framework Tests (Custom Command)
     - name: Run Robot Framework Tests
       run: |
-        robot --outputdir results/ui \
+        robot --outputdir ${{ github.workspace }}/tests/robot/reports \
           --variable BROWSER:chrome \
           --variable CHROME_ARGUMENTS:--headless,--no-sandbox,--disable-dev-shm-usage,--disable-gpu \
           AutomationProject/TestCases
