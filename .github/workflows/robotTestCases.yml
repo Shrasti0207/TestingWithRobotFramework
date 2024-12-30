@@ -81,13 +81,11 @@ jobs:
 
     # Step 6: Run Robot Framework UI tests
     - name: Run UI Tests
-      env:
-        ROBOT_SYS_ENV_CHROME: "headless"
       run: |
         mkdir -p results/ui
         robot --outputdir results/ui \
-          --variable BROWSER:headlesschrome \
-          --variable CHROME_ARGUMENTS:--no-sandbox,--disable-dev-shm-usage,--headless,--disable-gpu,--disable-extensions \
+          --variable BROWSER:chrome \
+          --variable CHROME_ARGUMENTS:--headless,--no-sandbox,--disable-dev-shm-usage,--disable-gpu \
           AutomationProject/TestCases
 
     # Step 7: Upload UI Test Results
