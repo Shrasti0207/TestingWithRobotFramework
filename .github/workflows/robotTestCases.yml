@@ -54,17 +54,31 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
-    # Step 3: Run Robot Framework UI Tests using the GitHub Action
-    - name: Robot Framework Action
-      uses: tarathep/robotframework-github-action@v1.0
+      # Step 2: Set up Python environment
+    - name: Set up Python
+      uses: actions/setup-python@v4
       with:
-        image: robotframework/robot-framework:latest  # Ensure valid image reference
-        tests_dir: '/home/runner/work/TestingWithRobotFramework/AutomationProject/TestCase'
+        python-version: '3.10'
 
-    # Step 4: Execute Robot Framework Tests (Custom Command)
-    - name: Run Robot Framework Tests
+    # Step 3: Install dependencies
+    - name: Install Dependencies
       run: |
-        robot --outputdir /home/runner/work/TestingWithRobotFramework/tests/robot/reports \
+        pip install --upgrade pip
+        pip install robotframework
+        pip install robotframework-seleniumlibrary
+        pip install webdrivermanager
+   
+    # Step 6: Run Robot Framework UI tests
+    - name: Run UI Tests
+      run: |
+        mkdir -p results/ui
+        robot --outputdir results/ui \
           --variable BROWSER:chrome \
           --variable CHROME_ARGUMENTS:--headless,--no-sandbox,--disable-dev-shm-usage,--disable-gpu \
-          /home/runner/work/TestingWithRobotFramework/AutomationProject/TestCases
+          AutomationProject/TestCases
+    # Step 7: Upload UI Test Results
+    - name: Upload UI Test Results
+      uses: actions/upload-artifact@v3
+      with:
+        name: robot-ui-results
+        path: results/ui/
