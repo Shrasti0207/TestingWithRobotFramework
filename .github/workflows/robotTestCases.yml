@@ -65,8 +65,8 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install robotframework
-        pip install robotframework-seleniumlibrary
-        pip install webdrivermanager
+        pip install robotframework robotframework-seleniumlibrary webdrivermanager
+        webdrivermanager chrome:latest
 
     # Step 4: Set up ChromeDriver
     - name: Set up ChromeDriver
