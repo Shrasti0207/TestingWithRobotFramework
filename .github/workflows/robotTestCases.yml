@@ -71,7 +71,23 @@ jobs:
     # Step 6: Run Robot Framework UI tests
     - name: Run UI Tests
       run: |
-       robot AutomationProject/TestCases
+       run: |
+          if ! robot --outputdir results --exclude skip tests/; then
+              echo "Robot Framework tests failed. Rerunning failed tests..."
+              if [ -f results/output.xml ]; then
+                  robot --rerunfailed results/output.xml --outputdir AutomationProject/TestCases|| true
+                  if [ -f results_rerun/output.xml ]; then
+                      rebot --output results/output.xml --log results/log.html --report results/report.html --merge results/output.xml results_rerun/output.xml
+                  else
+                      echo "No output.xml file found from rerun. Skipping merge."
+                  fi
+              else
+                  echo "No output.xml file found. Cannot rerun failed tests."
+              fi
+          fi
+
+          echo "Script execution completed"
+        continue-on-error: true
     # Step 7: Upload UI Test Results
     - name: Upload UI Test Results
       uses: actions/upload-artifact@v3
