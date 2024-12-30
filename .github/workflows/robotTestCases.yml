@@ -40,17 +40,11 @@ jobs:
         pip install robotframework-requests
         pip install robotframework-seleniumlibrary
         pip install selenium 
-
-    # Step 5: Set up Chrome options for headless mode
-    - name: Set up Chrome options
-      run: |
-        echo "Setting up Chrome options..."
-        export CHROME_OPTIONS="--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --remote-debugging-port=9222"
  
     # Step 4: Run Robot Framework tests
     - name: Run Tests
       run: |
-         xvfb-run robot --variable BROWSER:chrome --variable CHROME_OPTIONS:"$CHROME_OPTIONS" AutomationProject/TestCases
+         robot AutomationProject/TestCases
  
     # Step 5: Upload Test Results (Optional)
     - name: Upload Test Results
