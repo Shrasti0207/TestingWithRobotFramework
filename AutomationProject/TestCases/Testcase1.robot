@@ -9,6 +9,7 @@ ${password}    admin123
 
 *** Test Cases ***
 LoginTest
+    Create WebDriver    Chrome    chrome_options=--headless
     Open Browser    ${url}    ${browser}
     Maximize Browser Window
     Wait Until Element Is Visible    css:input[name="username"]    timeout=10s
