@@ -4,16 +4,13 @@ Library  SeleniumLibrary
 *** Variables ***
 ${browser}  Chrome
 ${url}  https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
-${username}     Admin
-${password}    admin123
+${username}  Admin
+${password}  admin123
 
 *** Test Cases ***
 LoginTest
-  # Define Chrome options
-    ${chrome_options}=  Create Dictionary    headless=True    no_sandbox=True    disable_dev_shm_usage=True    disable_gpu=True
-    
-    # Start the browser with the specified options
-    Create WebDriver    Chrome    options=${chrome_options}    
+    ${chrome_options}=  Create Dictionary    args=--headless,--no-sandbox,--disable-dev-shm-usage,--disable-gpu
+    Create WebDriver    Chrome    options=${chrome_options}
     Open Browser    ${url}    ${browser}
     Maximize Browser Window
     Wait Until Element Is Visible    css:input[name="username"]    timeout=10s
