@@ -54,7 +54,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
-    # Step 2: Set up Python environment
+      # Step 2: Set up Python environment
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -67,15 +67,19 @@ jobs:
         pip install robotframework
         pip install robotframework-seleniumlibrary
         pip install webdrivermanager
-        webdrivermanager chrome:latest --linkpath /usr/bin
 
-    # Step 4: Run Robot Framework UI tests
+    # Step 4: Set up ChromeDriver
+    - name: Set up ChromeDriver
+      run: |
+        webdrivermanager chrome:latest
+
+    # Step 5: Run Robot Framework UI tests
     - name: Run UI Tests
       run: |
         mkdir -p results/ui
-        robot --outputdir results/ui AutomationProject/TestCases
+        robot --outputdir results/ui AutomationProject/UITestCases
 
-    # Step 5: Upload UI Test Results
+    # Step 6: Upload UI Test Results
     - name: Upload UI Test Results
       uses: actions/upload-artifact@v3
       with:
