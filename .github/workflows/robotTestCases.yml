@@ -22,21 +22,6 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.10'
-
-    - name: Install Google Chrome
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y google-chrome-stable
-
-    # Step 4: Install ChromeDriver
-    - name: Install ChromeDriver
-      run: |
-        CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
-        CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
-        wget -q "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
-        unzip chromedriver_linux64.zip
-        sudo mv chromedriver /usr/local/bin/
-        rm chromedriver_linux64.zip
         
     # Step 3: Install dependencies
     - name: Install Dependencies
@@ -50,7 +35,7 @@ jobs:
     # Step 4: Run Robot Framework tests
     - name: Run Tests
       run: |
-        robot AutomationProject
+        robot AutomationProject/TestCases
  
     # Step 5: Upload Test Results (Optional)
     - name: Upload Test Results
