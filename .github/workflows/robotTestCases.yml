@@ -38,7 +38,7 @@ jobs:
     # Step 4: Run Robot Framework tests
     - name: Run Tests
       run: |
-        robot AutomationProject/APITestCases
+        robot AutomationProject
  
     # Step 5: Upload Test Results (Optional)
     - name: Upload Test Results
