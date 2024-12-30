@@ -1,5 +1,5 @@
 name: Run Robot Framework Tests
- 
+
 on:
   push:
     branches:
@@ -7,37 +7,96 @@ on:
   pull_request:
     branches:
       - master
- 
+
 jobs:
-  robot-tests:
+  # Job for running API tests
+  api-tests:
     runs-on: ubuntu-latest
- 
+
     steps:
     # Step 1: Checkout the code
     - name: Checkout Repository
       uses: actions/checkout@v3
- 
+
     # Step 2: Set up Python environment
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.10'
- 
+
     # Step 3: Install dependencies
     - name: Install Dependencies
       run: |
         pip install --upgrade pip
         pip install robotframework
-        pip install robotframework-requests 
- 
-    # Step 4: Run Robot Framework tests
-    - name: Run Tests
+        pip install robotframework-requests
+
+    # Step 4: Run Robot Framework API tests
+    - name: Run API Tests
       run: |
-        robot AutomationProject/APITestCases
- 
-    # Step 5: Upload Test Results (Optional)
-    - name: Upload Test Results
+        mkdir -p results/api
+        robot --outputdir results/api AutomationProject/APITestCases
+
+    # Step 5: Upload API Test Results
+    - name: Upload API Test Results
       uses: actions/upload-artifact@v3
       with:
-        name: robot-results
-        path: AutomationProject/Results
+        name: robot-api-results
+        path: results/api/
+
+  # Job for running UI tests
+  ui-tests:
+    runs-on: ubuntu-latest
+    needs: api-tests  # Optional: Ensure API tests run before UI tests
+
+    steps:
+    # Step 1: Checkout the code
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Python environment
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    # Step 3: Install dependencies
+    - name: Install Dependencies
+      run: |
+       pip install --upgrade pip
+       pip install robotframework
+       pip install robotframework-seleniumlibrary
+       pip install webdrivermanager
+       sudo apt-get update
+       sudo apt-get install -y \
+        fonts-liberation \
+        libappindicator3-1 \
+        libasound2 \
+        libatk-bridge2.0-0 \
+        libatk1.0-0 \
+        libcups2 \
+        libdbus-1-3 \
+        libgdk-pixbuf2.0-0 \
+        libnspr4 \
+        libnss3 \
+        libx11-xcb1 \
+        libxcomposite1 \
+        libxdamage1 \
+        libxrandr2
+       webdrivermanager chrome:latest
+
+
+    # Step 4: Run Robot Framework UI tests
+    - name: Run UI Tests
+      run: |
+        robot --outputdir results --exclude skip \
+        --variable BROWSER:chrome \
+        --variable CHROME_ARGUMENTS:--headless,--no-sandbox,--disable-dev-shm-usage,--disable-gpu \
+        AutomationProject/TestCases/
+
+    # Step 5: Upload UI Test Results
+    - name: Upload UI Test Results
+      uses: actions/upload-artifact@v3
+      with:
+        name: robot-ui-results
+        path: results/
