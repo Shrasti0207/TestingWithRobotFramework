@@ -9,8 +9,7 @@ ${password}  admin123
 
 *** Test Cases ***
 LoginTest
-    ${chrome_options}=  Create Dictionary    args=--headless,--no-sandbox,--disable-dev-shm-usage,--disable-gpu
-    Create WebDriver    Chrome    options=${chrome_options}
+    Create WebDriver    Chrome 
     Open Browser    ${url}    ${browser}
     Maximize Browser Window
     Wait Until Element Is Visible    css:input[name="username"]    timeout=10s
