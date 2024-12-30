@@ -54,43 +54,19 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
-      # Step 2: Set up Python environment
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    # Step 2: Use Robot Framework GitHub Action
+    - name: Run Robot Framework UI Tests
+      uses: tarathep/robotframework-github-action@v1.0
       with:
-        python-version: '3.10'
+        image: kietara/robot-framework
+        image_version: '1.0'
+        tests_dir: '${{ github.workspace }}/tests/robot'
+        reports_dir: '${{ github.workspace }}/tests/robot/reports'
 
-    # Step 3: Install dependencies
-    - name: Install Dependencies
+    # Step 3: Execute Robot Framework Tests
+    - name: Run Robot Framework Tests
       run: |
-        pip install --upgrade pip
-        pip install robotframework
-        pip install robotframework robotframework-seleniumlibrary webdrivermanager
-        webdrivermanager chrome:latest
-
-    # Step 4: Set up ChromeDriver
-    - name: Set up ChromeDriver
-      run: |
-        webdrivermanager chrome:latest
-
-    # Step 5: Install Google Chrome
-    - name: Install Google Chrome
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y google-chrome-stable
-
-    # Step 6: Run Robot Framework UI tests
-    - name: Run UI Tests
-      run: |
-        mkdir -p results/ui
         robot --outputdir results/ui \
           --variable BROWSER:chrome \
           --variable CHROME_ARGUMENTS:--headless,--no-sandbox,--disable-dev-shm-usage,--disable-gpu \
           AutomationProject/TestCases
-
-    # Step 7: Upload UI Test Results
-    - name: Upload UI Test Results
-      uses: actions/upload-artifact@v3
-      with:
-        name: robot-ui-results
-        path: results/ui/
