@@ -77,7 +77,7 @@ jobs:
     - name: Run UI Tests
       run: |
         mkdir -p results/ui
-        robot --outputdir results/ui AutomationProject/UITestCases
+        robot --outputdir results/ui AutomationProject/TestCases
 
     # Step 6: Upload UI Test Results
     - name: Upload UI Test Results
