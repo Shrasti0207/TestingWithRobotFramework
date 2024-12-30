@@ -1,6 +1,5 @@
 *** Settings ***
 Library  SeleniumLibrary
-Library  DataDriver     ../TestData/
 
 *** Variables ***
 ${browser}  Chrome
