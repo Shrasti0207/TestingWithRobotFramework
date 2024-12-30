@@ -9,7 +9,7 @@ ${password}    admin123
 
 *** Test Cases ***
 LoginTest
-    Create WebDriver    Chrome    chrome_options=--headless
+    Create WebDriver    Chrome    --chrome-options=--headless,--no-sandbox,--disable-dev-shm-usage,--disable-gpu
     Open Browser    ${url}    ${browser}
     Maximize Browser Window
     Wait Until Element Is Visible    css:input[name="username"]    timeout=10s
