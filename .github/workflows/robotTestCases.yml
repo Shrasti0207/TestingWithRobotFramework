@@ -71,11 +71,7 @@ jobs:
     # Step 6: Run Robot Framework UI tests
     - name: Run UI Tests
       run: |
-        mkdir -p results/ui
-        robot --outputdir results/ui \
-          --variable BROWSER:chrome \
-          --variable CHROME_ARGUMENTS:--headless,--no-sandbox,--disable-dev-shm-usage,--disable-gpu \
-          AutomationProject/TestCases
+       robot AutomationProject/TestCases
     # Step 7: Upload UI Test Results
     - name: Upload UI Test Results
       uses: actions/upload-artifact@v3
