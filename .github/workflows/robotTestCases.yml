@@ -63,30 +63,36 @@ jobs:
     # Step 3: Install dependencies
     - name: Install Dependencies
       run: |
-        pip install --upgrade pip
-        pip install robotframework
-        pip install robotframework-seleniumlibrary
-        pip install webdrivermanager
+       pip install --upgrade pip
+       pip install robotframework
+       pip install robotframework-seleniumlibrary
+       pip install webdrivermanager
+       sudo apt-get update
+       sudo apt-get install -y \
+        fonts-liberation \
+        libappindicator3-1 \
+        libasound2 \
+        libatk-bridge2.0-0 \
+        libatk1.0-0 \
+        libcups2 \
+        libdbus-1-3 \
+        libgdk-pixbuf2.0-0 \
+        libnspr4 \
+        libnss3 \
+        libx11-xcb1 \
+        libxcomposite1 \
+        libxdamage1 \
+        libxrandr2
+       webdrivermanager chrome:latest
+
 
     # Step 4: Run Robot Framework UI tests
     - name: Run UI Tests
       run: |
-        if ! robot --outputdir results --exclude skip AutomationProject/TestCases/; then
-            echo "Robot Framework tests failed. Rerunning failed tests..."
-            if [ -f results/output.xml ]; then
-                robot --rerunfailed results/output.xml --outputdir AutomationProject/TestCases/results_rerun || true
-                if [ -f AutomationProject/TestCases/results_rerun/output.xml ]; then
-                    rebot --output results/output.xml --log results/log.html --report results/report.html --merge results/output.xml AutomationProject/TestCases/results_rerun/output.xml
-                else
-                    echo "No output.xml file found from rerun. Skipping merge."
-                fi
-            else
-                echo "No output.xml file found. Cannot rerun failed tests."
-            fi
-        fi
-
-        echo "Script execution completed"
-      continue-on-error: true
+        robot --outputdir results --exclude skip \
+        --variable BROWSER:chrome \
+        --variable CHROME_ARGUMENTS:--headless,--no-sandbox,--disable-dev-shm-usage,--disable-gpu \
+        AutomationProject/TestCases/
 
     # Step 5: Upload UI Test Results
     - name: Upload UI Test Results
