@@ -54,7 +54,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
-    # Step 2: Ensure reports directory exists
+    # Step 2: Ensure reports directory exists (no error if it already exists)
     - name: Create Reports Directory
       run: |
         mkdir -p ${{ github.workspace }}/tests/robot/reports
@@ -63,8 +63,7 @@ jobs:
     - name: Robot Framework Action
       uses: tarathep/robotframework-github-action@v1.0
       with:
-        image: robotframework/robot-framework:latest  # Updated to a valid image
-        image_version: 'latest'  # Ensure to use a working version
+        image: robotframework/robot-framework:latest  # Ensure valid image reference
         tests_dir: '${{ github.workspace }}/tests/robot'
         reports_dir: '${{ github.workspace }}/tests/robot/reports'
 
