@@ -54,7 +54,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
-      # Step 2: Set up Python environment
+    # Step 2: Set up Python environment
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -67,30 +67,30 @@ jobs:
         pip install robotframework
         pip install robotframework-seleniumlibrary
         pip install webdrivermanager
-   
-    # Step 6: Run Robot Framework UI tests
+
+    # Step 4: Run Robot Framework UI tests
     - name: Run UI Tests
       run: |
-       run: |
-          if ! robot --outputdir results --exclude skip tests/; then
-              echo "Robot Framework tests failed. Rerunning failed tests..."
-              if [ -f results/output.xml ]; then
-                  robot --rerunfailed results/output.xml --outputdir AutomationProject/TestCases|| true
-                  if [ -f results_rerun/output.xml ]; then
-                      rebot --output results/output.xml --log results/log.html --report results/report.html --merge results/output.xml results_rerun/output.xml
-                  else
-                      echo "No output.xml file found from rerun. Skipping merge."
-                  fi
-              else
-                  echo "No output.xml file found. Cannot rerun failed tests."
-              fi
-          fi
+        if ! robot --outputdir results --exclude skip AutomationProject/TestCases/; then
+            echo "Robot Framework tests failed. Rerunning failed tests..."
+            if [ -f results/output.xml ]; then
+                robot --rerunfailed results/output.xml --outputdir AutomationProject/TestCases/results_rerun || true
+                if [ -f AutomationProject/TestCases/results_rerun/output.xml ]; then
+                    rebot --output results/output.xml --log results/log.html --report results/report.html --merge results/output.xml AutomationProject/TestCases/results_rerun/output.xml
+                else
+                    echo "No output.xml file found from rerun. Skipping merge."
+                fi
+            else
+                echo "No output.xml file found. Cannot rerun failed tests."
+            fi
+        fi
 
-          echo "Script execution completed"
-        continue-on-error: true
-    # Step 7: Upload UI Test Results
+        echo "Script execution completed"
+      continue-on-error: true
+
+    # Step 5: Upload UI Test Results
     - name: Upload UI Test Results
       uses: actions/upload-artifact@v3
       with:
         name: robot-ui-results
-        path: results/ui/
+        path: results/
