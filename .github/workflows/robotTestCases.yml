@@ -47,7 +47,6 @@ jobs:
   # Job for running UI tests
   ui-tests:
     runs-on: ubuntu-latest
-    needs: api-tests  # Optional: Ensure API tests run before UI tests
 
     steps:
     # Step 1: Checkout the code
