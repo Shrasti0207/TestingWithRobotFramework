@@ -47,32 +47,34 @@ jobs:
   # Job for running UI tests
   ui-tests:
     runs-on: ubuntu-latest
-    needs: api-tests
+    needs: api-tests  # Optional: Ensure API tests run before UI tests
 
     steps:
+    # Step 1: Checkout the code
     - name: Checkout Repository
       uses: actions/checkout@v3
 
+    # Step 2: Set up Python environment
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.10'
 
+    # Step 3: Install dependencies
     - name: Install Dependencies
       run: |
-        pip install --upgrade pip
-        pip install robotframework
-        pip install robotframework-seleniumlibrary
-        webdrivermanager chrome:latest 
+       pip install --upgrade pip
+       pip install robotframework
+       pip install robotframework-seleniumlibrary
+       webdrivermanager chrome:latest
 
-    - name: Check Chrome Installation
-      run: |
-        google-chrome --version 
 
+    # Step 4: Run Robot Framework UI tests
     - name: Run UI Tests
       run: |
         robot AutomationProject/TestCases/
 
+    # Step 5: Upload UI Test Results
     - name: Upload UI Test Results
       uses: actions/upload-artifact@v3
       with:
