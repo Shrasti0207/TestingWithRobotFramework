@@ -58,7 +58,7 @@ jobs:
 
       - name: Run UI Tests
         run: |
-          robot --outputdir results/ui AutomationProject/TestCases/
+          robot --outputdir results/ui AutomationProject/UITestCases
 
       - name: Upload UI Test Results
         uses: actions/upload-artifact@v3
