@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.8.10 on linux)" generated="2025-01-02T15:12:25.112095" rpa="false" schemaversion="5">
+<suite id="s1" name="UITestCases" source="/home/nashtech/PycharmProjects/TestingWithRobotFramework/AutomationProject/UITestCases">
+<suite id="s1-s1" name="Testcase1" source="/home/nashtech/PycharmProjects/TestingWithRobotFramework/AutomationProject/UITestCases/Testcase1.robot">
+<test id="s1-s1-t1" name="Verify Login Page Title" line="10">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-01-02T15:12:25.208015" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7f96ab3237f0&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-01-02T15:12:25.207712" elapsed="0.000336"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-01-02T15:12:25.208237" elapsed="0.000149"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-01-02T15:12:25.208703" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<arg>Chrome</arg>
+<arg>options=${options}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-01-02T15:12:25.208526" elapsed="0.847703"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-01-02T15:12:26.057042" level="INFO">Opening url 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'</msg>
+<arg>${BASE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-01-02T15:12:26.056708" elapsed="9.999684"/>
+</kw>
+<kw name="Title Should Start With">
+<kw name="Get Title" owner="SeleniumLibrary">
+<msg time="2025-01-02T15:12:36.060757" level="INFO">${title} = OrangeHRM</msg>
+<var>${title}</var>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2025-01-02T15:12:36.057299" elapsed="0.003498"/>
+</kw>
+<kw name="Should Start With" owner="BuiltIn">
+<arg>${title}</arg>
+<arg>${expected}</arg>
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<status status="PASS" start="2025-01-02T15:12:36.060953" elapsed="0.000196"/>
+</kw>
+<arg>${EXPECTED_TITLE}</arg>
+<status status="PASS" start="2025-01-02T15:12:36.056841" elapsed="0.004384"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-01-02T15:12:36.061371" elapsed="0.065610"/>
+</kw>
+<status status="PASS" start="2025-01-02T15:12:25.206850" elapsed="10.920531"/>
+</test>
+<status status="PASS" start="2025-01-02T15:12:25.125876" elapsed="11.002381"/>
+</suite>
+<status status="PASS" start="2025-01-02T15:12:25.112966" elapsed="11.016179"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="UITestCases">UITestCases</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Testcase1">UITestCases.Testcase1</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
