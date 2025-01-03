@@ -8,7 +8,7 @@ ${EXPECTED_TITLE}  OrangeHRM
 
 *** Test Cases ***
 Verify Login Page Title
-# Test case to verify the title of the login page.
+# Test case to verify the title of the login page
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${options}    add_argument    --headless
     Create WebDriver    Chrome    options=${options}

@@ -1,71 +1,438 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.1.1 (Python 3.8.10 on linux)" generated="2025-01-03T09:17:51.212751" rpa="false" schemaversion="5">
-<suite id="s1" name="UITestCases" source="/home/nashtech/PycharmProjects/TestingWithRobotFramework/AutomationProject/UITestCases">
-<suite id="s1-s1" name="Testcase1" source="/home/nashtech/PycharmProjects/TestingWithRobotFramework/AutomationProject/UITestCases/Testcase1.robot">
-<test id="s1-s1-t1" name="Verify Login Page Title" line="10">
+<robot generator="Robot 7.1.1 (Python 3.8.10 on linux)" generated="2025-01-03T12:03:47.490938" rpa="false" schemaversion="5">
+<suite id="s1" name="AutomationProject" source="/home/nashtech/PycharmProjects/TestingWithRobotFramework/AutomationProject">
+<suite id="s1-s1" name="AcceptanceTestCases" source="/home/nashtech/PycharmProjects/TestingWithRobotFramework/AutomationProject/AcceptanceTestCases">
+<suite id="s1-s1-s1" name="GherkinStyleLoginTestcase" source="/home/nashtech/PycharmProjects/TestingWithRobotFramework/AutomationProject/AcceptanceTestCases/GherkinStyleLoginTestcase.robot">
+<test id="s1-s1-s1-t1" name="LoginTest" line="12">
+<kw name="Given Open Login Page">
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-01-03T12:03:47.587287" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<arg>${browser}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-01-03T12:03:47.587082" elapsed="0.314705"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-01-03T12:03:47.902672" level="INFO">Opening browser 'Chrome' to base url 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-01-03T12:03:47.902259" elapsed="5.730026"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-01-03T12:03:53.632654" elapsed="0.016048"/>
+</kw>
+<status status="PASS" start="2025-01-03T12:03:47.586397" elapsed="6.062586"/>
+</kw>
+<kw name="When Pass Admin and admin123" source_name="Pass ${username} and ${password}">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css:input[name="username"]</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-01-03T12:03:53.650444" elapsed="0.729271"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-01-03T12:03:54.380194" level="INFO">Typing text 'Admin' into text field 'css:input[name="username"]'.</msg>
+<arg>css:input[name="username"]</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-03T12:03:54.379924" elapsed="0.048088"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-01-03T12:03:54.428538" level="INFO">Typing text 'admin123' into text field 'css:input[name="password"]'.</msg>
+<arg>css:input[name="password"]</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-03T12:03:54.428254" elapsed="0.044797"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css:button[type="submit"]</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-01-03T12:03:54.473295" elapsed="0.011607"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-01-03T12:03:54.485309" level="INFO">Clicking element 'css:button[type="submit"]'.</msg>
+<arg>css:button[type="submit"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-03T12:03:54.485102" elapsed="0.031497"/>
+</kw>
+<status status="PASS" start="2025-01-03T12:03:53.649740" elapsed="0.867014"/>
+</kw>
+<kw name="Then Login should Pass">
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2025-01-03T12:03:55.746340" level="INFO">Page title is 'OrangeHRM'.</msg>
+<arg>OrangeHRM</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2025-01-03T12:03:54.517415" elapsed="1.229035"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css:span.oxd-userdropdown-tab</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-01-03T12:03:55.746637" elapsed="0.429538"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-01-03T12:03:56.185149" level="INFO">Element 'css:span.oxd-userdropdown-tab' is displayed.</msg>
+<arg>css:span.oxd-userdropdown-tab</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-01-03T12:03:56.176492" elapsed="0.008824"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-01-03T12:03:56.185612" elapsed="0.061571"/>
+</kw>
+<status status="PASS" start="2025-01-03T12:03:54.517075" elapsed="1.730251"/>
+</kw>
+<status status="PASS" start="2025-01-03T12:03:47.585663" elapsed="8.661883"/>
+</test>
+<status status="PASS" start="2025-01-03T12:03:47.504863" elapsed="8.743133"/>
+</suite>
+<status status="PASS" start="2025-01-03T12:03:47.504008" elapsed="8.744566"/>
+</suite>
+<suite id="s1-s2" name="APITestCases" source="/home/nashtech/PycharmProjects/TestingWithRobotFramework/AutomationProject/APITestCases">
+<suite id="s1-s2-s1" name="DELETERequest" source="/home/nashtech/PycharmProjects/TestingWithRobotFramework/AutomationProject/APITestCases/DELETERequest.robot">
+<test id="s1-s2-s1-t1" name="Delete Request" line="9">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-01-03T12:03:56.286414" level="INFO">Creating Session using : alias=mysession, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-01-03T12:03:56.286252" elapsed="0.000331"/>
+</kw>
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2025-01-03T12:03:56.950737" level="INFO">DELETE Request : url=https://jsonplaceholder.typicode.com/posts/1 
+ path_url=/posts/1 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2025-01-03T12:03:56.951054" level="INFO">DELETE Response : url=https://jsonplaceholder.typicode.com/posts/1 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 03 Jan 2025 06:33:56 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1735886036&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=oVsDRJnPHpA8dGfZsFphPbg%2F9s9aoa%2FnWQ6OQY5CbWQ%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1735886036&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=oVsDRJnPHpA8dGfZsFphPbg%2F9s9aoa%2FnWQ6OQY5CbWQ%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'X-Ratelimit-Limit': '1000', 'X-Ratelimit-Remaining': '999', 'X-Ratelimit-Reset': '1735886081', 'Vary': 'Origin, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '-1', 'X-Content-Type-Options': 'nosniff', 'Etag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'Via': '1.1 vegur', 'cf-cache-status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '8fc0f5d199ea0b58-AMS', 'alt-svc': 'h3=":443"; ma=86400', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=159725&amp;min_rtt=157477&amp;rtt_var=63550&amp;sent=5&amp;recv=6&amp;lost=0&amp;retrans=0&amp;sent_bytes=2840&amp;recv_bytes=807&amp;delivery_rate=23047&amp;cwnd=252&amp;unsent_bytes=0&amp;cid=ded8a446f7ce37bd&amp;ts=276&amp;x=0"'} 
+ body={} 
+ </msg>
+<msg time="2025-01-03T12:03:56.951233" level="INFO">/home/nashtech/PycharmProjects/TestingWithRobotFramework/.venv/lib/python3.8/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-01-03T12:03:56.951635" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>/posts/${post_id}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-01-03T12:03:56.286765" elapsed="0.664944"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-01-03T12:03:56.953420" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-01-03T12:03:56.952175" elapsed="0.001411"/>
+</kw>
+<status status="PASS" start="2025-01-03T12:03:56.285905" elapsed="0.668101"/>
+</test>
+<status status="PASS" start="2025-01-03T12:03:56.250397" elapsed="0.704055"/>
+</suite>
+<suite id="s1-s2-s2" name="GetRequest" source="/home/nashtech/PycharmProjects/TestingWithRobotFramework/AutomationProject/APITestCases/GetRequest.robot">
+<test id="s1-s2-s2-t1" name="Get Request" line="9">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-01-03T12:03:56.956448" level="INFO">Creating Session using : alias=mysession, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-01-03T12:03:56.956305" elapsed="0.000290"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-01-03T12:03:57.209469" level="INFO">GET Request : url=https://jsonplaceholder.typicode.com/posts/1 
+ path_url=/posts/1 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-01-03T12:03:57.209791" level="INFO">GET Response : url=https://jsonplaceholder.typicode.com/posts/1 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 03 Jan 2025 06:33:57 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1735097549&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=rxCTqKjy3NcSyiKRbzObGH5QRUwTGKGx27OJTrrQmak%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1735097549&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=rxCTqKjy3NcSyiKRbzObGH5QRUwTGKGx27OJTrrQmak%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'X-Ratelimit-Limit': '1000', 'X-Ratelimit-Remaining': '999', 'X-Ratelimit-Reset': '1735097601', 'Vary': 'Origin, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'max-age=43200', 'Pragma': 'no-cache', 'Expires': '-1', 'X-Content-Type-Options': 'nosniff', 'Etag': 'W/"124-yiKdLzqO5gfBrJFrcdJ8Yq0LGnU"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'HIT', 'Age': '10817', 'Server': 'cloudflare', 'CF-RAY': '8fc0f5d45b97f8ff-SIN', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=78282&amp;min_rtt=78256&amp;rtt_var=29398&amp;sent=5&amp;recv=6&amp;lost=0&amp;retrans=0&amp;sent_bytes=2841&amp;recv_bytes=785&amp;delivery_rate=51538&amp;cwnd=252&amp;unsent_bytes=0&amp;cid=2c2189c31fcc087a&amp;ts=92&amp;x=0"'} 
+ body={
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+} 
+ </msg>
+<msg time="2025-01-03T12:03:57.210005" level="INFO">/home/nashtech/PycharmProjects/TestingWithRobotFramework/.venv/lib/python3.8/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-01-03T12:03:57.210319" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>/posts/${post_id}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-01-03T12:03:56.956734" elapsed="0.253653"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-01-03T12:03:57.212217" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-01-03T12:03:57.210914" elapsed="0.001477"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-03T12:03:57.214111" level="INFO">${body} = {
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nrepr...</msg>
+<var>${body}</var>
+<arg>${response.text}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-03T12:03:57.212833" elapsed="0.001350"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${body}</arg>
+<arg>${post_id}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-01-03T12:03:57.214633" elapsed="0.000468"/>
+</kw>
+<status status="PASS" start="2025-01-03T12:03:56.956046" elapsed="0.259417"/>
+</test>
+<status status="PASS" start="2025-01-03T12:03:56.954766" elapsed="0.261289"/>
+</suite>
+<suite id="s1-s2-s3" name="PostRequest" source="/home/nashtech/PycharmProjects/TestingWithRobotFramework/AutomationProject/APITestCases/PostRequest.robot">
+<test id="s1-s2-s3-t1" name="Post Request" line="9">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-01-03T12:03:57.228152" level="INFO">Creating Session using : alias=mysession, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-01-03T12:03:57.227981" elapsed="0.000331"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-01-03T12:03:57.228796" level="INFO">${body} = {'id': '101', 'title': 'My Title', 'body': 'This is a test paragraph.'}</msg>
+<var>${body}</var>
+<arg>id=101</arg>
+<arg>title=My Title</arg>
+<arg>body=This is a test paragraph.</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-01-03T12:03:57.228474" elapsed="0.000345"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-01-03T12:03:58.163163" level="INFO">POST Request : url=https://jsonplaceholder.typicode.com/posts 
+ path_url=/posts 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '71', 'Content-Type': 'application/json'} 
+ body=b'{"id": "101", "title": "My Title", "body": "This is a test paragraph."}' 
+ </msg>
+<msg time="2025-01-03T12:03:58.163389" level="INFO">POST Response : url=https://jsonplaceholder.typicode.com/posts 
+ status=201, reason=Created 
+ headers={'Date': 'Fri, 03 Jan 2025 06:33:58 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '77', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1735886038&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=lhG2Nif9Zaz8YYrIyhqhhBoEIoTps2rGyQdpf4%2FXAf0%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1735886038&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=lhG2Nif9Zaz8YYrIyhqhhBoEIoTps2rGyQdpf4%2FXAf0%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'X-Ratelimit-Limit': '1000', 'X-Ratelimit-Remaining': '998', 'X-Ratelimit-Reset': '1735886081', 'Vary': 'Origin, X-HTTP-Method-Override, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '-1', 'Access-Control-Expose-Headers': 'Location', 'Location': 'https://jsonplaceholder.typicode.com/posts/101', 'X-Content-Type-Options': 'nosniff', 'Etag': 'W/"4d-rNGZiLjMeOfNNZkb7tP/lpG1U2I"', 'Via': '1.1 vegur', 'cf-cache-status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '8fc0f5d60bb9897d-SIN', 'alt-svc': 'h3=":443"; ma=86400', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=76747&amp;min_rtt=76745&amp;rtt_var=28785&amp;sent=5&amp;recv=7&amp;lost=0&amp;retrans=0&amp;sent_bytes=2841&amp;recv_bytes=929&amp;delivery_rate=52678&amp;cwnd=250&amp;unsent_bytes=0&amp;cid=fcfe9d469d230599&amp;ts=777&amp;x=0"'} 
+ body={
+  "id": 101,
+  "title": "My Title",
+  "body": "This is a test paragraph."
+} 
+ </msg>
+<msg time="2025-01-03T12:03:58.163643" level="INFO">/home/nashtech/PycharmProjects/TestingWithRobotFramework/.venv/lib/python3.8/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-01-03T12:03:58.163921" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>/posts</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-01-03T12:03:57.228946" elapsed="0.935037"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-01-03T12:03:58.165650" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-01-03T12:03:58.164425" elapsed="0.001377"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-03T12:03:58.167273" level="INFO">${response_body} = {
+  "id": 101,
+  "title": "My Title",
+  "body": "This is a test paragraph."
+}</msg>
+<var>${response_body}</var>
+<arg>${response.text}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-03T12:03:58.166216" elapsed="0.001122"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response_body}</arg>
+<arg>My Title</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-01-03T12:03:58.167702" elapsed="0.000383"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response_body}</arg>
+<arg>This is a test paragraph.</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-01-03T12:03:58.168406" elapsed="0.000358"/>
+</kw>
+<status status="PASS" start="2025-01-03T12:03:57.227658" elapsed="0.941445"/>
+</test>
+<status status="PASS" start="2025-01-03T12:03:57.216995" elapsed="0.952672"/>
+</suite>
+<suite id="s1-s2-s4" name="PUTRequest" source="/home/nashtech/PycharmProjects/TestingWithRobotFramework/AutomationProject/APITestCases/PUTRequest.robot">
+<test id="s1-s2-s4-t1" name="Put Request" line="10">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-01-03T12:03:58.171853" level="INFO">Creating Session using : alias=mysession, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-01-03T12:03:58.171718" elapsed="0.000284"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-01-03T12:03:58.172353" level="INFO">${body} = {'id': '1', 'title': 'Updated Title', 'body': 'Updated Body.'}</msg>
+<var>${body}</var>
+<arg>id=${post_id}</arg>
+<arg>title=Updated Title</arg>
+<arg>body=Updated Body.</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-01-03T12:03:58.172145" elapsed="0.000227"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2025-01-03T12:03:59.518000" level="INFO">PUT Request : url=https://jsonplaceholder.typicode.com/posts/1 
+ path_url=/posts/1 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '62', 'Content-Type': 'application/json'} 
+ body=b'{"id": "1", "title": "Updated Title", "body": "Updated Body."}' 
+ </msg>
+<msg time="2025-01-03T12:03:59.518121" level="INFO">PUT Response : url=https://jsonplaceholder.typicode.com/posts/1 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 03 Jan 2025 06:33:59 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1735886038&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=lhG2Nif9Zaz8YYrIyhqhhBoEIoTps2rGyQdpf4%2FXAf0%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1735886038&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;s=lhG2Nif9Zaz8YYrIyhqhhBoEIoTps2rGyQdpf4%2FXAf0%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'X-Ratelimit-Limit': '1000', 'X-Ratelimit-Remaining': '997', 'X-Ratelimit-Reset': '1735886081', 'Vary': 'Origin, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '-1', 'X-Content-Type-Options': 'nosniff', 'Etag': 'W/"44-wddmrutFHg8kZFUZ6raBMebWPwk"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '8fc0f5dbfed5ab4d-SIN', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=76845&amp;min_rtt=76804&amp;rtt_var=28885&amp;sent=6&amp;recv=7&amp;lost=0&amp;retrans=0&amp;sent_bytes=2841&amp;recv_bytes=921&amp;delivery_rate=52425&amp;cwnd=251&amp;unsent_bytes=0&amp;cid=ebff1c9655702c2a&amp;ts=796&amp;x=0"'} 
+ body={
+  "id": 1,
+  "title": "Updated Title",
+  "body": "Updated Body."
+} 
+ </msg>
+<msg time="2025-01-03T12:03:59.518197" level="INFO">/home/nashtech/PycharmProjects/TestingWithRobotFramework/.venv/lib/python3.8/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-01-03T12:03:59.518329" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>/posts/${post_id}</arg>
+<arg>json=${body}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-01-03T12:03:58.172483" elapsed="1.345874"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-01-03T12:03:59.519155" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-01-03T12:03:59.518579" elapsed="0.000669"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-03T12:03:59.520088" level="INFO">${response_body} = {
+  "id": 1,
+  "title": "Updated Title",
+  "body": "Updated Body."
+}</msg>
+<var>${response_body}</var>
+<arg>${response.text}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-03T12:03:59.519503" elapsed="0.000619"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response_body}</arg>
+<arg>Updated Title</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-01-03T12:03:59.520328" elapsed="0.000204"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response_body}</arg>
+<arg>Updated Body.</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-01-03T12:03:59.520697" elapsed="0.000167"/>
+</kw>
+<status status="PASS" start="2025-01-03T12:03:58.171460" elapsed="1.349583"/>
+</test>
+<status status="PASS" start="2025-01-03T12:03:58.170034" elapsed="1.351333"/>
+</suite>
+<status status="PASS" start="2025-01-03T12:03:56.248903" elapsed="3.273042"/>
+</suite>
+<suite id="s1-s3" name="UITestCases" source="/home/nashtech/PycharmProjects/TestingWithRobotFramework/AutomationProject/UITestCases">
+<suite id="s1-s3-s1" name="Testcase1" source="/home/nashtech/PycharmProjects/TestingWithRobotFramework/AutomationProject/UITestCases/Testcase1.robot">
+<test id="s1-s3-s1-t1" name="Verify Login Page Title" line="10">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-01-03T09:17:51.306451" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7f2240b257f0&gt;</msg>
+<msg time="2025-01-03T12:03:59.526042" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7f2ce2c57be0&gt;</msg>
 <var>${options}</var>
 <arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
 <arg>sys, selenium.webdriver</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-01-03T09:17:51.306129" elapsed="0.000355"/>
+<status status="PASS" start="2025-01-03T12:03:59.525679" elapsed="0.000397"/>
 </kw>
 <kw name="Call Method" owner="BuiltIn">
 <arg>${options}</arg>
 <arg>add_argument</arg>
 <arg>--headless</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-01-03T09:17:51.306645" elapsed="0.000170"/>
+<status status="PASS" start="2025-01-03T12:03:59.526287" elapsed="0.000197"/>
 </kw>
 <kw name="Create Webdriver" owner="SeleniumLibrary">
-<msg time="2025-01-03T09:17:51.307194" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg time="2025-01-03T12:03:59.526903" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
 <arg>Chrome</arg>
 <arg>options=${options}</arg>
 <doc>Creates an instance of Selenium WebDriver.</doc>
-<status status="PASS" start="2025-01-03T09:17:51.306960" elapsed="0.174229"/>
+<status status="PASS" start="2025-01-03T12:03:59.526662" elapsed="0.174739"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-01-03T09:17:51.482045" level="INFO">Opening url 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'</msg>
+<msg time="2025-01-03T12:03:59.702346" level="INFO">Opening url 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'</msg>
 <arg>${BASE_URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-01-03T09:17:51.481662" elapsed="4.095786"/>
+<status status="PASS" start="2025-01-03T12:03:59.701946" elapsed="3.739949"/>
 </kw>
 <kw name="Title Should Start With">
 <kw name="Get Title" owner="SeleniumLibrary">
-<msg time="2025-01-03T09:17:55.581360" level="INFO">${title} = OrangeHRM</msg>
+<msg time="2025-01-03T12:04:03.446186" level="INFO">${title} = OrangeHRM</msg>
 <var>${title}</var>
 <doc>Returns the title of the current page.</doc>
-<status status="PASS" start="2025-01-03T09:17:55.578265" elapsed="0.003135"/>
+<status status="PASS" start="2025-01-03T12:04:03.442656" elapsed="0.003570"/>
 </kw>
 <kw name="Should Start With" owner="BuiltIn">
 <arg>${title}</arg>
 <arg>${expected}</arg>
 <doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
-<status status="PASS" start="2025-01-03T09:17:55.581556" elapsed="0.000206"/>
+<status status="PASS" start="2025-01-03T12:04:03.446387" elapsed="0.000209"/>
 </kw>
 <arg>${EXPECTED_TITLE}</arg>
-<status status="PASS" start="2025-01-03T09:17:55.577839" elapsed="0.004000"/>
+<status status="PASS" start="2025-01-03T12:04:03.442269" elapsed="0.004403"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-01-03T09:17:55.582003" elapsed="0.067612"/>
+<status status="PASS" start="2025-01-03T12:04:03.446821" elapsed="0.064765"/>
 </kw>
-<status status="PASS" start="2025-01-03T09:17:51.305195" elapsed="4.345002"/>
+<status status="PASS" start="2025-01-03T12:03:59.525291" elapsed="3.986674"/>
 </test>
-<status status="PASS" start="2025-01-03T09:17:51.225862" elapsed="4.425706"/>
+<status status="PASS" start="2025-01-03T12:03:59.523607" elapsed="3.988903"/>
 </suite>
-<status status="PASS" start="2025-01-03T09:17:51.213517" elapsed="4.439804"/>
+<status status="PASS" start="2025-01-03T12:03:59.522462" elapsed="3.991056"/>
+</suite>
+<status status="PASS" start="2025-01-03T12:03:47.491669" elapsed="16.022720"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="UITestCases">UITestCases</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1" name="Testcase1">UITestCases.Testcase1</stat>
+<stat pass="6" fail="0" skip="0" id="s1" name="AutomationProject">AutomationProject</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="AcceptanceTestCases">AutomationProject.AcceptanceTestCases</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="GherkinStyleLoginTestcase">AutomationProject.AcceptanceTestCases.GherkinStyleLoginTestcase</stat>
+<stat pass="4" fail="0" skip="0" id="s1-s2" name="APITestCases">AutomationProject.APITestCases</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s2-s1" name="DELETERequest">AutomationProject.APITestCases.DELETERequest</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s2-s2" name="GetRequest">AutomationProject.APITestCases.GetRequest</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s2-s3" name="PostRequest">AutomationProject.APITestCases.PostRequest</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s2-s4" name="PUTRequest">AutomationProject.APITestCases.PUTRequest</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s3" name="UITestCases">AutomationProject.UITestCases</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s3-s1" name="Testcase1">AutomationProject.UITestCases.Testcase1</stat>
 </suite>
 </statistics>
 <errors>
