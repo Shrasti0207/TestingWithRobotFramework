@@ -1,5 +1,6 @@
 name: Run Robot Framework Tests
 
+# Define the events that trigger the workflow
 on:
   push:
     branches:
@@ -9,6 +10,7 @@ on:
       - master
 
 jobs:
+  # Define the job for running API tests
   Robot_Api-tests:
     runs-on: ubuntu-latest
     steps:
@@ -37,6 +39,7 @@ jobs:
           name: robot-api-results
           path: results/api/
 
+ # Define the job for running UI tests
   Robot_UI-Tests:
     runs-on: ubuntu-latest
     steps:
