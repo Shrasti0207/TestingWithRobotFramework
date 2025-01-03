@@ -8,6 +8,7 @@ ${EXPECTED_TITLE}  OrangeHRM
 
 *** Test Cases ***
 Verify Login Page Title
+# Test case to verify the title of the login page.
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${options}    add_argument    --headless
     Create WebDriver    Chrome    options=${options}
@@ -16,6 +17,7 @@ Verify Login Page Title
     Close Browser
 
 *** Keywords ***
+# Keyword to check if the page title starts with the expected text.
 Title Should Start With
     [Arguments]    ${expected}
     ${title}=    Get Title
